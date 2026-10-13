@@ -71,7 +71,22 @@ python train_tracker.py --use-coord-time-embeds --use-cross-attn --emb-dim 128 \
     --triple-seed-train --triple-seeds 11 22 33
 ```
 
-> **Note:** some dataset, prediction and checkpoint paths are still hard-coded in the scripts and must be edited to match your setup before running. Configurable paths are planned.
+### Paths
+
+All paths are defined in [`config.py`](config.py) and can be overridden with environment variables. Defaults are relative to the repository root.
+
+| Variable | Default | Content |
+|---|---|---|
+| `DATASET_ROOT` | `./dataset` | Dataset (`<split>/<sequence>/`) |
+| `VIEWS_ROOT` | `./views` | Frames for the false-positive analysis |
+| `PREDS_DIR` | `./preds` | Detector predictions and queries (`.npy`) |
+| `CKPT_DIR` | `./checkpoints` | Tracker checkpoints |
+| `TRACKEVAL_DIR` | `./TrackEval` | TrackEval clone and tracker outputs |
+| `ONNX_MODEL` | `./rtdetr_damages.onnx` | Exported RT-DETR detector |
+
+```bash
+DATASET_ROOT=/path/to/dataset PREDS_DIR=/path/to/preds python train_tracker.py ...
+```
 
 ## License
 

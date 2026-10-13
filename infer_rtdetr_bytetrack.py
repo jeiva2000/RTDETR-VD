@@ -10,6 +10,7 @@ import numpy as np
 from pathlib import Path
 from PIL import ImageFile
 import argparse
+from config import DATASET_ROOT, ONNX_MODEL, TRACKEVAL_PREDS_ROOT, VIEWS_ROOT
 ImageFile.LOAD_TRUNCATED_IMAGES = True
 
 def infer_rtdetr(sess, image_path, th=0.4):
@@ -351,23 +352,23 @@ def run_bytetrack_from_rtdetr_folder(
 
 
 """
-sess = ort.InferenceSession("rtdetr_damages.onnx", providers=["CUDAExecutionProvider", "CPUExecutionProvider"])
-output_path = '/home/serperzar/custom_mot_2/TrackEval/data/trackers/mot_challenge/damages-test/rtdetr_onnx/'
+sess = ort.InferenceSession(ONNX_MODEL, providers=["CUDAExecutionProvider", "CPUExecutionProvider"])
+output_path = os.path.join(TRACKEVAL_PREDS_ROOT, 'rtdetr_onnx') + '/'
 os.makedirs(output_path,exist_ok=True)
 os.makedirs(output_path+'/data',exist_ok=True)
 info = run_bytetrack_from_rtdetr_folder(
     sess,
-    images_dir="/data/backup/serperzar/mot/damages/dataset/test/aveo",
-    out_tracks_txt="/home/serperzar/custom_mot_2/TrackEval/data/trackers/mot_challenge/damages-test/rtdetr_onnx/data/aveo.txt",
+    images_dir=os.path.join(DATASET_ROOT, "test", "aveo"),
+    out_tracks_txt=os.path.join(TRACKEVAL_PREDS_ROOT, "rtdetr_onnx", "data", "aveo.txt"),
     det_th=0.4,
     per_class=True,   # si quieres IDs separados por clase
 )
 print(info)
 """
 
-sess = ort.InferenceSession("rtdetr_damages.onnx", providers=["CUDAExecutionProvider", "CPUExecutionProvider"])
-test_root = Path("/data/backup/serperzar/mot/damages/dataset/test")
-views_root = Path("/data/backup/serperzar/mot/damages/views")
+sess = ort.InferenceSession(ONNX_MODEL, providers=["CUDAExecutionProvider", "CPUExecutionProvider"])
+test_root = Path(DATASET_ROOT) / "test"
+views_root = Path(VIEWS_ROOT)
 
 parser = argparse.ArgumentParser()
 parser.add_argument('--th_score', type=float)
@@ -443,7 +444,7 @@ else:
 
 
 # Base de salida (TrackEval)
-output_root = Path("/home/serperzar/custom_mot_2/TrackEval/data/trackers/mot_challenge/damages-test/rtdetr_onnx_"+str(th_score))
+output_root = Path(TRACKEVAL_PREDS_ROOT) / ("rtdetr_onnx_" + str(th_score))
 os.makedirs(output_root,exist_ok=True)
 output_data = output_root / "data"
 output_data.mkdir(parents=True, exist_ok=True)

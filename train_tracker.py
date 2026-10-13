@@ -15,6 +15,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torch.utils.data import Dataset, DataLoader
 from tqdm import tqdm
+from config import CKPT_DIR, PREDS_DIR, TRACKEVAL_DIR, TRACKEVAL_PREDS_ROOT, VIEWS_ROOT
 
 
 def set_seed(seed: int = 42) -> None:
@@ -225,7 +226,7 @@ def _parse_metrics_from_summary(trackeval_dir: str, tracker_name: str) -> Dict[s
 
 
 def run_trackeval_for_tracker(tracker_name: str, show_output: bool = False) -> Optional[Dict[str, float]]:
-    trackeval_dir = "TrackEval"
+    trackeval_dir = TRACKEVAL_DIR
     cmd = [
         sys.executable,
         "scripts/run_mot_challenge.py",
@@ -1075,7 +1076,7 @@ def eval_one_epoch(
         os.makedirs(fp_calc_frames_dir, exist_ok=True)
         if mode == "test" and use_postprocess:
             print(f"[views_fp] views_preds_gts_dir={fp_calc_frames_dir}")
-    views_root = os.environ.get("VIEWS_ROOT", "/data/backup/serperzar/mot/damages/views")
+    views_root = VIEWS_ROOT
     views_index: Dict[str, set[str]] = {}
     if fp_calc_enabled and os.path.isdir(views_root):
         for vid in os.listdir(views_root):
@@ -2372,9 +2373,9 @@ def main() -> None:
     if args.seed is not None:
         set_seed(args.seed)
 
-    train_npy_path = "/data/backup/serperzar/models/custom/preds/train_damages.npy"
-    val_npy_path = "/data/backup/serperzar/models/custom/preds/val_damages.npy"
-    test_npy_path = "/data/backup/serperzar/models/custom/preds/test_damages.npy"
+    train_npy_path = os.path.join(PREDS_DIR, "train_damages.npy")
+    val_npy_path = os.path.join(PREDS_DIR, "val_damages.npy")
+    test_npy_path = os.path.join(PREDS_DIR, "test_damages.npy")
     seq_len = args.seq_len
     stride = args.stride
     test_seq_len = args.test_seq_len
@@ -2430,12 +2431,12 @@ def main() -> None:
     test_min_track_len = args.test_min_track_len
     test_emit_videos = args.emit_videos
     test_calc_false_positives = args.calc_false_positives
-    test_preds_root = "/home/serperzar/custom_mot_2/TrackEval/data/trackers/mot_challenge/damages-test"
+    test_preds_root = TRACKEVAL_PREDS_ROOT
     track_tag = build_track_tag(args)
     test_preds_dir = os.path.join(test_preds_root, track_tag, "data")
     track_tag_no_post = f"{track_tag}_no_post"
     test_preds_no_post_dir = os.path.join(test_preds_root, track_tag_no_post, "data")
-    ckpt_root = "/data/backup/serperzar/models/rtdetr_mot"
+    ckpt_root = CKPT_DIR
     ckpt_dir = os.path.join(ckpt_root, track_tag)
     os.makedirs(ckpt_dir, exist_ok=True)
     best_ckpt_path = os.path.join(ckpt_dir, "mlp_queries_triplet_best.pt")

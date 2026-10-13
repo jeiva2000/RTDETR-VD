@@ -8,6 +8,7 @@ from scipy.optimize import linear_sum_assignment
 import torch
 import numpy as np
 from infer_onnx_rtdetrv2 import *
+from config import DATASET_ROOT, ONNX_MODEL, VIEWS_ROOT
 from losses import xyxy_to_xcycwh, xyxy_to_xywh
 import onnxruntime as ort
 from PIL import ImageFile
@@ -81,16 +82,16 @@ if dino:
 
 mode = 'test'
 file_name = 'test_damages.npy'
-root_path = '/data/backup/serperzar/mot/damages/dataset/test' #'/data/backup/serperzar/mot/MOT20/mot_dataset/test' #'/data/backup/serperzar/mot/bdd100k/bdd100k/images/track/test' #'/data/backup/serperzar/mot/bdd100k/bdd100k/images/track/train' #'/data/backup/serperzar/mot/dancetrack/mot_dataset/val' #'/data/backup/serperzar/mot/BFT/val' #'/data/backup/serperzar/mot/bdd100k/bdd100k/images/track/train'
+root_path = os.path.join(DATASET_ROOT, 'test')
 dataset_dict = {'dancetrack':['person'], 'bdd100k':['car','sign', 'light', 'person', 'truck', 'bus', 'bike', 'rider', 'motor', 'train'], 'bft':['bird'], 'mot17':['person','car'], 'damages':['damage']}
 dataset = 'damages'
 
 if dataset == 'damages' and mode == 'test':
-   root_path = '/data/backup/serperzar/mot/damages/views'
+   root_path = VIEWS_ROOT
    file_name = 'preds_fp.npy'
 
 if dataset == 'damages':
-   sess = ort.InferenceSession('rtdetr_damages.onnx',providers=["CUDAExecutionProvider"])
+   sess = ort.InferenceSession(ONNX_MODEL,providers=["CUDAExecutionProvider"])
    print("ORT device:", ort.get_device())
    print("Available providers:", ort.get_available_providers())
    print("Session providers:", sess.get_providers())

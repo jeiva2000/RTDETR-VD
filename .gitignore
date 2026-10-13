@@ -24,3 +24,7 @@ runs/
 *.pth
 *.npy
 TrackEval/
+dataset/
+views/
+preds/
+checkpoints/
