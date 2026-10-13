@@ -240,6 +240,8 @@ def run_trackeval_for_tracker(tracker_name: str, show_output: bool = False) -> O
         "CLEAR",
         "Identity",
         "HOTA",
+        "--PLOT_CURVES",
+        "False",
     ]
     prev_cwd = os.getcwd()
     try:

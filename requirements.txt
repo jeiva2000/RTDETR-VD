@@ -8,6 +8,7 @@ scipy>=1.15
 opencv-python>=4.10
 Pillow>=10.0
 tqdm>=4.66
+matplotlib>=3.7     # required by TrackEval
 ultralytics>=8.3        # RT-DETR detector
 onnxruntime-gpu>=1.20   # use `onnxruntime` for CPU-only; scripts request CUDAExecutionProvider
 cjm_byte_track>=0.0.6   # ByteTrack baseline (infer_rtdetr_bytetrack.py)
