@@ -1,0 +1,41 @@
+cff-version: 1.2.0
+message: "If you use this code or dataset, please cite our paper."
+title: "RTDETR-VD: Vehicle damage detection with transformer-based multi-object tracking"
+type: software
+license: MIT
+repository-code: "https://github.com/jeiva2000/RTDETR-VD"
+authors:
+  - family-names: Pérez-Zarate
+    given-names: Sergio Andrés
+  - family-names: Pro-Martín
+    given-names: Jose Luis
+  - family-names: Álvarez-García
+    given-names: Juan Antonio
+  - family-names: Martínez-del-Amor
+    given-names: Miguel Ángel
+  - family-names: Corzo-García
+    given-names: Daniel
+  - family-names: Fernández-Cabrera
+    given-names: David
+preferred-citation:
+  type: article
+  title: "Vehicle damage detection with transformer-based multi-object tracking"
+  journal: "Engineering Applications of Artificial Intelligence"
+  volume: 176
+  start: 114725
+  year: 2026
+  doi: "10.1016/j.engappai.2026.114725"
+  url: "https://www.sciencedirect.com/science/article/pii/S0952197626010079"
+  authors:
+    - family-names: Pérez-Zarate
+      given-names: Sergio Andrés
+    - family-names: Pro-Martín
+      given-names: Jose Luis
+    - family-names: Álvarez-García
+      given-names: Juan Antonio
+    - family-names: Martínez-del-Amor
+      given-names: Miguel Ángel
+    - family-names: Corzo-García
+      given-names: Daniel
+    - family-names: Fernández-Cabrera
+      given-names: David
