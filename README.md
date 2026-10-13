@@ -6,8 +6,6 @@ Official code and dataset for **"Vehicle damage detection with transformer-based
 [![Code license: MIT](https://img.shields.io/badge/code-MIT-green)](LICENSE)
 [![Dataset license: CC BY-NC 4.0](https://img.shields.io/badge/dataset-CC%20BY--NC%204.0-lightgrey)](https://creativecommons.org/licenses/by-nc/4.0/)
 
-https://github.com/user-attachments/assets/1ab382b7-c5df-4350-aa68-8c1f79ccd33a
-
 ![Demo](animacion_sub25mb.gif)
 
 ## Overview
