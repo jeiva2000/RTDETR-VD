@@ -1,0 +1,26 @@
+# Python
+__pycache__/
+*.py[cod]
+.pycache/
+.pycache_local/
+
+# OS / editors
+.DS_Store
+.idea/
+.vscode/
+
+# Outputs and large local assets
+gif/
+test_viz/
+val_viz/
+imagenes_articulo/
+*.mp4
+log*.txt
+runs/
+
+# Models, predictions and external data
+*.onnx
+*.pt
+*.pth
+*.npy
+TrackEval/
