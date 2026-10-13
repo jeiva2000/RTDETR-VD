@@ -5,6 +5,10 @@ https://github.com/user-attachments/assets/1ab382b7-c5df-4350-aa68-8c1f79ccd33a
 ![Demo](animacion_sub25mb.gif)
 
 
+# Dataset access
+
+To request access to the dataset, please fill out the following form: [Dataset request form](https://forms.gle/oFPwwhZofzhr8S27A)
+
 # Terms of use
 
 This dataset can be used for academic research free of charge, citing the paper as we explain below. If you seek to use the data for commercial purposes please contact us.
