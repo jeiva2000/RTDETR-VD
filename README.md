@@ -12,15 +12,17 @@ We detect vehicle damage with RT-DETR and track each damage instance across a vi
 
 ## Qualitative examples
 
-ByteTrack on RT-DETR detections (left) vs. our tracker (right) on test sequences. Boxes show damage detections; colors and labels are track identities.
+ByteTrack on RT-DETR detections (left) vs. our tracker (right) on an excerpt of the `aveo` test sequence (frames 131-280). Boxes show damage detections; colors and labels are track identities. Our tracker keeps one identity per damage, while ByteTrack keeps assigning new ones.
 
 ![ByteTrack vs. ours on aveo](assets/examples/compare_aveo.gif)
 
 On the full `aveo` sequence ByteTrack produces 61 identities, while our tracker produces 9 (the ground truth has 9 damage tracks).
 
-| `VID_20260118_222318` | `VID_20260210_104922` (ours) |
+Our tracker on other test sequences:
+
+| `aveo` | `VID_20260210_104922` |
 |---|---|
-| ![ByteTrack vs. ours on VID_20260118_222318](assets/examples/compare_VID_20260118_222318.gif) | ![Ours on VID_20260210_104922](assets/examples/ours_VID_20260210_104922.gif) |
+| ![Our tracker on aveo](assets/examples/ours_aveo.gif) | ![Our tracker on VID_20260210_104922](assets/examples/ours_VID_20260210_104922.gif) |
 
 Frames shown are from the anonymized dataset. You can render your own examples with `visualize_tracks.py`.
 
