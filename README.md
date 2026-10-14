@@ -12,6 +12,20 @@ Official code and dataset for **"Vehicle damage detection with transformer-based
 
 We detect vehicle damage with RT-DETR and track each damage instance across a video, so that the same damage is counted once and followed through the walk-around. This repository contains the tracker training code, the inference scripts and a video-based vehicle damage dataset in MOT Challenge format.
 
+## Qualitative examples
+
+ByteTrack on RT-DETR detections (left) vs. our tracker (right) on test sequences. Boxes show damage detections; colors and labels are track identities.
+
+![ByteTrack vs. ours on aveo](assets/examples/compare_aveo.gif)
+
+On the full `aveo` sequence ByteTrack produces 61 identities, while our tracker produces 9 (the ground truth has 9 damage tracks).
+
+| `VID_20260118_222318` | `VID_20260210_104922` (ours) |
+|---|---|
+| ![ByteTrack vs. ours on VID_20260118_222318](assets/examples/compare_VID_20260118_222318.gif) | ![Ours on VID_20260210_104922](assets/examples/ours_VID_20260210_104922.gif) |
+
+Frames shown are from the anonymized dataset. You can render your own examples with `visualize_tracks.py`.
+
 ## Dataset
 
 17 video sequences of vehicles with annotated damage, in MOT Challenge format, with a single class (`damage`). License plates are anonymized.
@@ -60,6 +74,7 @@ Install a `torch`/`torchvision` build that matches your CUDA version first (see 
 | `infer_rtdetr_bytetrack.py` | ByteTrack baseline on RT-DETR detections. |
 | `losses.py`, `infer_onnx_rtdetrv2.py` | Loss functions and ONNX inference helpers. |
 | `extract_video_frames.py`, `generate_video_from_frames.py`, `create_gif.py` | Video and visualization utilities. |
+| `visualize_tracks.py` | Renders tracking results over a sequence as an animated GIF. |
 
 Example:
 
