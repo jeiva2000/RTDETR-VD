@@ -6,8 +6,6 @@ Official code and dataset for **"Vehicle damage detection with transformer-based
 [![Code license: MIT](https://img.shields.io/badge/code-MIT-green)](LICENSE)
 [![Dataset license: CC BY-NC 4.0](https://img.shields.io/badge/dataset-CC%20BY--NC%204.0-lightgrey)](https://creativecommons.org/licenses/by-nc/4.0/)
 
-![Demo](animacion_sub25mb.gif)
-
 ## Overview
 
 We detect vehicle damage with RT-DETR and track each damage instance across a video, so that the same damage is counted once and followed through the walk-around. This repository contains the tracker training code, the inference scripts and a video-based vehicle damage dataset in MOT Challenge format.
